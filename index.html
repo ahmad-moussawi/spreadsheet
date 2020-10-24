@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spreadsheet</title>
+    <style>
+        body {
+            width: 100vw;
+            height: 100vh;
+            margin: 0;
+        }
+        canvas {
+            width: 100vw;
+            height: 100vh;
+        }
+        .canvas-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+        }
+        .selected {
+            position: absolute;
+            display: none;
+            border: .5px solid #2376e5;
+            transition: 50ms linear all;
+        }
+
+        .selected .corner {
+            position: absolute;
+            background-color: #2376e5;
+            display: block;
+            width: 4px;
+            height: 4px;
+            bottom: -2px;
+            right: -2px;
+        }
+    </style>
+</head>
+<body>
+    <div class="selected"><span class="corner"></span></div>
+    <canvas id="canvas"></canvas>
+    <div class="canvas-overlay"></div>
+    <script src="index.js"></script>
+</body>
+</html>
