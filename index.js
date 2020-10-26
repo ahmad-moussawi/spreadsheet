@@ -107,19 +107,16 @@ function onMousedown(ev) {
     overlay.addEventListener('mousemove', onMousemove);
 }
 
-function onMousemove(ev) {
+var onMousemove = _.debounce((ev) => {
     if (isMousedown) {
-        debounce(() => {
-            console.countReset('move');
-            var xs = mousedown.x,
-                ys = mousedown.y,
-                xe = snapX(ev.clientX),
-                ye = snapY(ev.clientY);
-            select(Math.min(xs, xe), Math.min(ys, ye), Math.abs(xs - xe), Math.abs(ys - ye));
-            console.count('move');
-        }, 10)();
+        var xs = mousedown.x,
+            ys = mousedown.y,
+            xe = snapX(ev.clientX),
+            ye = snapY(ev.clientY);
+        select(Math.min(xs, xe), Math.min(ys, ye), Math.abs(xs - xe), Math.abs(ys - ye));
+        console.log('move');
     }
-}
+}, 200);
 
 function onMouseup(ev) {
     clearTimeout(clickTimeout);
